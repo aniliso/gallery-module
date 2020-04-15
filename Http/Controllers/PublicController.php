@@ -7,6 +7,7 @@ use Modules\Core\Http\Controllers\BasePublicController;
 use Modules\Gallery\Repositories\AlbumRepository;
 use Breadcrumbs;
 use Modules\Gallery\Repositories\CategoryRepository;
+use Modules\Gallery\Support\Collection;
 
 class PublicController extends BasePublicController
 {
@@ -101,5 +102,27 @@ class PublicController extends BasePublicController
         /* End Breadcrumbs */
 
         return view('gallery::category', compact('category', 'albums'));
+    }
+
+    public function files()
+    {
+        $albums = $this->album->all();
+
+        $files = new Collection();
+        foreach ($albums as $album) {
+            foreach ($album->files()->get() as $file) {
+                $files->push($file);
+            }
+        }
+
+        $files = $files->paginate(9);
+
+        $this->setTitle(trans('themes::gallery.meta.title'))
+            ->setDescription(trans('themes::gallery.meta.desc'));
+
+        $this->setUrl(route('gallery.album.index'))
+            ->addMeta('robots', 'index, follow');
+
+        return view('gallery::index', compact('albums', 'files'));
     }
 }

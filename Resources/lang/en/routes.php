@@ -3,7 +3,8 @@
 return [
     'album' => [
         'show'  => 'gallery/{slug}',
-        'index' => 'gallery'
+        'index' => 'gallery',
+        'files' => 'album-files'
     ],
     'category' => 'gallery/category/{slug}'
 ];

@@ -46,6 +46,8 @@ class GalleryServiceProvider extends ServiceProvider
         $this->publishConfig('gallery', 'permissions');
 
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+
+
     }
 
     /**

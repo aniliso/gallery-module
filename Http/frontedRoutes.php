@@ -4,6 +4,10 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 
 $router->group([], function (Router $router) {
+    $router->get(LaravelLocalization::transRoute('gallery::routes.album.files'), [
+        'uses' => 'PublicController@files',
+        'as'   => 'gallery.album.files'
+    ]);
     $router->get(LaravelLocalization::transRoute('gallery::routes.category'), [
         'uses' => 'PublicController@category',
         'as'   => 'gallery.category'

@@ -94,6 +94,7 @@ class GalleryServiceProvider extends ServiceProvider
     private function registerWidgets()
     {
         \Widget::register('galleryLatest', '\Modules\Gallery\Widgets\GalleryWidgets@latest');
+        \Widget::register('galleryByCategory', '\Modules\Gallery\Widgets\GalleryWidgets@latestByCategory');
         \Widget::register('galleryCategories', '\Modules\Gallery\Widgets\GalleryWidgets@categories');
     }
 }

@@ -35,7 +35,7 @@ class GalleryWidgets
     public function latestByCategory($slug="", $limit=6, $view="latest-category")
     {
         $category = $this->category->findBySlug($slug);
-        if($category->albums()->count() > 0) {
+        if($category) {
             $albums = $category->albums()->active()->take($limit)->get();
             return view('gallery::widgets.'.$view, compact('albums', 'category'));
         }

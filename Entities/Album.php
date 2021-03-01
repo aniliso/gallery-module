@@ -44,11 +44,16 @@ class Album extends Model implements TaggableInterface
         'meta_robot_no_follow',
         'sitemap_include',
         'sitemap_priority',
-        'sitemap_frequency'
+        'sitemap_frequency',
+        'settings'
     ];
 
     protected static $entityNamespace = 'asgardcms/gallery';
     protected $presenter = AlbumPresenter::class;
+
+    protected $casts = [
+      'settings' => 'object'
+    ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
